@@ -64,6 +64,7 @@ The analysis uses a database composed of four primary tables and additional CSV 
 chicago-taxi-analysis/
 │
 ├── chicago_taxi_analysis.ipynb
+├── data_extraction_script.txt
 ├── project_sql_result_01.csv
 ├── project_sql_result_04.csv
 ├── project_sql_result_07.csv
