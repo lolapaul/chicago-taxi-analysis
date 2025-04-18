@@ -73,6 +73,16 @@ chicago-taxi-analysis/
 
 ---
 
+## 🧩 Data Extraction
+
+Prior to the Python analysis, relevant datasets were generated using SQL queries and additional data was scraped from the web.
+
+- 🔹 `data_extraction_script.txt`: This file contains the full SQL code used to query the `trips`, `weather_records`, `cabs`, and `neighborhoods` tables to extract insights such as trip counts by company and weather conditions. It also includes Python code used to scrape historical weather data from [this external source](https://practicum-content.s3.us-west-1.amazonaws.com/data-analyst-eng/moved_chicago_weather_2017.html).
+
+These queries and scripts formed the basis for the CSV files analyzed in the notebook.
+
+---
+
 ## 🛠️ Tools & Libraries Used
 
 - SQL
