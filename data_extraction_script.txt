@@ -1,0 +1,126 @@
+
+
+EJERCICIO INICIAL\
+import requests\
+import pandas as pd\
+from bs4 import BeautifulSoup\
+# Direcci\'f3n donde esta los datos de clima de\
+# Chicago en noviembre de 2017\
+URL = 'https://practicum-content.s3.us-west-1.amazonaws.com/data-analyst-eng/moved_chicago_weather_2017.html'\
+# Petici\'f3n al servidor de la informaci\'f3n del sitio\
+req = requests.get(URL)\
+# Usar beautiful soup para extraer la tabla\
+soup = BeautifulSoup(req.text,'lxml')\
+# Extraer el c\'f3digo en una variable\
+# Crear una lista con los encabezados\
+heading_table = []\
+for row in table.find_all('th'):\
+    heading_table.append(row.text)\
+# Crear una lista con el contenido de la tabla\
+content = []\
+for row in table.find_all('tr'):\
+    if not row.find_all('th'):\
+        content.append([element.text for element in row.find_all('td')])\
+# Crear un dataframe con los datos sobre el clima\
+weather_records = pd.DataFrame(content, columns = heading_table)\
+print(weather_records)\
+
+EJERCICIO 1/6\
+select\
+    cabs.company_name,\
+    COUNT(trips.trip_id) as trips_amount\
+from\
+    cabs\
+    INNER JOIN trips ON trips.cab_id = cabs.cab_id\
+where\
+    trips.start_ts::date BETWEEN '2017-11-15' AND '2017-11-16'\
+GROUP by\
+    company_name\
+ORDER by\
+    trips_amount DESC;\
+
+EJERCICIO 2/6\
+SELECT\
+    cabs.company_name,\
+    COUNT(trips.trip_id) as trip_amount\
+FROM\
+    cabs\
+    INNER JOIN trips ON trips.cab_id = cabs.cab_id\
+WHERE \
+    cabs.company_name LIKE '%Yellow%' AND\
+    trips.start_ts::date BETWEEN '2017-11-01' and '2017-11-07'\
+GROUP by\
+    cabs.company_name\
+UNION ALL\
+SELECT\
+    cabs.company_name,\
+    COUNT(trips.trip_id) as trip_amount\
+FROM\
+    cabs\
+    INNER JOIN trips ON trips.cab_id = cabs.cab_id\
+WHERE \
+    cabs.company_name LIKE '%Blue%' AND\
+    trips.start_ts::date BETWEEN '2017-11-01' and '2017-11-07'\
+GROUP by\
+    cabs.company_name;\
+
+EJERCICIO 3/6\
+SELECT\
+    CASE\
+        WHEN company_name = 'Flash Cab' THEN 'Flash Cab'\
+        WHEN company_name = 'Taxi Affiliation Services' THEN 'Taxi Affiliation Services'\
+    ELSE 'Other'\
+    END AS company,\
+    COUNT(trips.trip_id) as trips_amount\
+from\
+    cabs\
+    INNER JOIN trips ON trips.cab_id = cabs.cab_id\
+where\
+    trips.start_ts::date BETWEEN '2017-11-01' AND '2017-11-07'\
+GROUP by\
+    company\
+ORDER by\
+    trips_amount DESC;\
+
+EJERCICIO 4/6\
+SELECT\
+    neighborhood_id,\
+    name\
+FROM \
+    neighborhoods\
+where\
+    name LIKE 'Loop' OR\
+    name LIKE '%Hare';\
+
+EJERCICIO 5/6\
+SELECT\
+    ts,\
+    CASE\
+        WHEN description LIKE '%rain%' OR description LIKE '%storm%' THEN 'Bad'\
+    else\
+        'Good'\
+    END as weather_conditions\
+FROM\
+    weather_records;\
+
+EJERCICIO 6/6\
+SELECT\
+    trips.start_ts,\
+    time.weather_conditions,\
+    duration_seconds\
+FROM\
+    trips\
+    INNER JOIN\
+            (SELECT\
+                ts,\
+                CASE\
+        WHEN description LIKE '%rain%' OR description LIKE '%storm%' THEN 'Bad'\
+    else\
+        'Good'\
+    END as weather_conditions\
+FROM\
+    weather_records) as time on time.ts = trips.start_ts\
+WHERE\
+    trips.pickup_location_id = 50 AND trips.dropoff_location_id = 63 AND EXTRACT(ISODOW FROM start_ts) = 6\
+ORDER by\
+trip_id;\
