@@ -1,10 +1,10 @@
-# 🚕 Chicago Taxi Analysis
+#  Chicago Taxi Analysis
 
 Exploratory data analysis and hypothesis testing for a new ride-sharing company operating in Chicago. This project investigates passenger behavior, trip patterns, taxi company performance, and weather effects on travel durations using real-world data from November 2017.
 
 ---
 
-## 📌 Objective
+##  Objective
 
 The goal of this project is to:
 
@@ -16,7 +16,7 @@ The goal of this project is to:
 
 ---
 
-## 📊 Dataset Description
+##  Dataset Description
 
 The analysis uses a database composed of four primary tables and additional CSV files:
 
@@ -33,7 +33,7 @@ The analysis uses a database composed of four primary tables and additional CSV 
 
 ---
 
-## 🔍 Project Workflow
+##  Project Workflow
 
 1. **Data Extraction & SQL Queries**
    - Identify top companies and daily usage patterns
@@ -50,7 +50,7 @@ The analysis uses a database composed of four primary tables and additional CSV 
 
 ---
 
-## 📊 Key Questions Answered
+##  Key Questions Answered
 
 - Which taxi companies are most active?
 - What are the most popular drop-off neighborhoods?
@@ -59,7 +59,7 @@ The analysis uses a database composed of four primary tables and additional CSV 
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 ```
 chicago-taxi-analysis/
 │
@@ -74,7 +74,7 @@ chicago-taxi-analysis/
 
 ---
 
-## 🧩 Data Extraction
+##  Data Extraction
 
 Prior to the Python analysis, relevant datasets were generated using SQL queries and additional data was scraped from the web.
 
@@ -84,7 +84,7 @@ These queries and scripts formed the basis for the CSV files analyzed in the not
 
 ---
 
-## 🛠️ Tools & Libraries Used
+##  Tools & Libraries Used
 
 - SQL
 - Python
@@ -97,13 +97,13 @@ These queries and scripts formed the basis for the CSV files analyzed in the not
 
 ---
 
-## ✅ Status
+##  Status
 
 ✔️ Project completed as part of the **TripleTen Bootcamp** – Sprint: *SQL & Data Interpretation*
 
 ---
 
-## 📌 Author
+##  Author
 
 David Villanueva  
 [LinkedIn](https://www.linkedin.com/in/david-villanueva-59659727)  
