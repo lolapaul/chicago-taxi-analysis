@@ -97,12 +97,6 @@ These queries and scripts formed the basis for the CSV files analyzed in the not
 
 ---
 
-##  Status
-
-✔️ Project completed as part of the **TripleTen Bootcamp** – Sprint: *SQL & Data Interpretation*
-
----
-
 ##  Author
 
 David Villanueva  
